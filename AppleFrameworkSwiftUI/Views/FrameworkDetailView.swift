@@ -12,6 +12,7 @@ struct FrameworkDetailView: View {
     var framework: Framework
     
     @Binding var isShowingDetailView: Bool
+    @State var isShowingSafariView: Bool = false
     
     var body: some View {
         VStack{
@@ -34,9 +35,14 @@ struct FrameworkDetailView: View {
             
             Spacer()
             Button {
-                print("nothing")
+                isShowingSafariView = true
             } label: {
                 AFButton(buttonTitle: "Learn More")
+            }
+            .fullScreenCover(isPresented: $isShowingSafariView) {
+                if let frameworkURLString = URL(string: framework.urlString) {
+                    SafariView(url: frameworkURLString)
+                }
             }
         }
     }

@@ -29,7 +29,7 @@ struct FrameworkGridView: View {
             }
             .navigationTitle("🍎 Frameworks")
         }
-        .tint(.white)
+       
         .listRowSeparator(.hidden, edges: .all)
     }
 }
